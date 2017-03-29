@@ -1,0 +1,42 @@
+```
+
+void RocioOneDirection(){
+
+  CameraTrans.position = startPos;
+
+  //Take the first diameter size.
+
+  //Origin is the center of our object in relation to the screen and not the game world
+  Vector2 origin = Camera.main.WorldToScreenPoint(TargetObj.GetComponent<Renderer>().bounds.center);
+  print ("This is the origin point: "+origin);
+
+  //extent is half the size of the object which is the radius
+  Vector2 extent = Camera.main.WorldToScreenPoint(TargetObj.GetComponent<Renderer>().bounds.extents);
+  print ("This is the extent point: "+extent);
+
+  //ds1 is the distance between these two vectors, it returns a magnitude (orgin - extent)
+  float dis1 = Vector2.Distance (origin, extent);
+  //assign value to the label
+  ds1 = dis1 * 2;
+
+  //Move the camera/robot a distance of d on the z axis
+  Vector3 v = CameraTrans.position;
+  v.z += DistanceTorwardObj;
+  CameraTrans.position = v;
+
+  //Get ds2
+  Vector2 origin2 = Camera.main.WorldToScreenPoint(TargetObj.GetComponent<Renderer>().bounds.center);
+  //extent is half the size of the object which is the radius
+  Vector2 extent2 = Camera.main.WorldToScreenPoint(TargetObj.GetComponent<Renderer>().bounds.extents);
+
+
+  //ds2 is the distance between these two vectors, it returns a magnitude (orgin - extent)
+  float dis2 = Vector2.Distance (origin2, extent2);
+  ds2 = dis2 * 2;
+
+  //use formaula to get a distance
+  float distance = (DistanceTorwardObj * dis1)/ (dis2 - dis1);
+  Distance = distance;
+}
+
+```
